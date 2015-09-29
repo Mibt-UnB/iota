@@ -5,7 +5,7 @@ perl:
 env:
   - PERL_CPANM_OPT="-v --mirror http://cpan.cpantesters.org/ --mirror http://search.cpan.org/CPAN --mirror http://cpan.mirrors.travis-ci.org --cascade-search --notest --force --skip-satisfied --no-interactive"
 before_install:
-  - sudo apt-get install postgresql libdbd-pg-perl
+  - sudo apt-get install postgresql libdbd-pg-perl cpanminus
   - sudo cpanm --quiet --notest App::Sqitch
   - sudo cpanm -n Module::Install Catalyst::Devel Text::CSV JSON::Any MooseX::Types::JSON
   - sudo cpanm -n DBIx::Class
