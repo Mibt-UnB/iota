@@ -5,14 +5,12 @@ perl:
 env:
   - PERL_CPANM_OPT="-v --mirror http://cpan.cpantesters.org/ --mirror http://search.cpan.org/CPAN --mirror http://cpan.mirrors.travis-ci.org --cascade-search --notest --force --skip-satisfied --no-interactive"
 before_install:
-  # - wget -c https://launchpad.net/ubuntu/+archive/primary/+files/sqitch_0.9992-1_all.deb && sudo dpkg -i sqitch_0.9992-1_all.deb && sudo apt-get install -f
-  - sudo apt-get install postgresql libdbd-pg-perl
-  - sudo cpanm --notest App::Sqitch
-  - cpanm --notest --verbose --no-interactive --skip-satisfied App::Sqitch
-  - cpanm -n Module::Install Catalyst::Devel Text::CSV JSON::Any MooseX::Types::JSON
-  - cpanm -n DBIx::Class
-  - cpanm -n DBIx::Class::Optional::Dependencies
-  - cpanm -n Catalyst::Plugin::Assets
+  - sudo apt-get install postgresql libdbd-pg-perl cpanminus
+  - sudo cpanm --notest --verbose --no-interactive --skip-satisfied App::Sqitch
+  - sudo cpanm -n Module::Install Catalyst::Devel Text::CSV JSON::Any MooseX::Types::JSON
+  - sudo cpanm -n DBIx::Class
+  - sudo cpanm -n DBIx::Class::Optional::Dependencies
+  - sudo cpanm -n Catalyst::Plugin::Assets
 before_script:
   - psql -c 'create database iota_production;' -U postgres
   - sqitch -d iota_production deploy
