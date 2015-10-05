@@ -5,9 +5,9 @@ perl:
 env:
   - PERL_CPANM_OPT="-v --mirror http://cpan.cpantesters.org/ --mirror http://search.cpan.org/CPAN --mirror http://cpan.mirrors.travis-ci.org --cascade-search --notest --force --skip-satisfied --no-interactive"
 before_install:
-  - sudo apt-get install libclass-load-perl libclass-method-modifiers-perl libclass-singleton-perl libconfig-gitlike-perl libdatetime-locale-perl libdatetime-perl libdatetime-timezone-perl libdbd-pg-perl libdbi-perl libdevel-globaldestruction-perl libdevel-stacktrace-perl libfile-homedir-perl libhash-merge-perl libimport-into-perl libipc-run3-perl libipc-system-simple-perl libmodule-implementation-perl libmodule-runtime-perl libmoo-perl libmoox-types-mooselike-perl libpackage-stash-perl libparams-classify-perl libparams-validate-perl libpath-class-perl libpq5 librole-tiny-perl libstrictures-perl libstring-formatter-perl libsub-exporter-progressive-perl libtemplate-tiny-perl libthrowable-perl libtry-tiny-perl libtype-tiny-perl
-  - wget -c https://launchpad.net/ubuntu/+archive/primary/+files/sqitch_0.9992-1_all.deb && sudo dpkg -i sqitch_0.9992-1_all.deb
+  # - wget -c https://launchpad.net/ubuntu/+archive/primary/+files/sqitch_0.9992-1_all.deb && sudo dpkg -i sqitch_0.9992-1_all.deb && sudo apt-get install -f
   - sudo apt-get install postgresql libdbd-pg-perl
+  - sudo cpanm --notest App::Sqitch
   - cpanm --notest --verbose --no-interactive --skip-satisfied App::Sqitch
   - cpanm -n Module::Install Catalyst::Devel Text::CSV JSON::Any MooseX::Types::JSON
   - cpanm -n DBIx::Class
